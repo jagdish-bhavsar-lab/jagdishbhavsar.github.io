@@ -7,22 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --bg: #080810;
-    --bg2: #0e0e18;
-    --bg3: #13131e;
+    --bg: #0f0f1a;
+    --bg2: #13131f;
+    --bg3: #17172a;
     --accent: #00e5ff;
     --accent2: #7c3aed;
     --text: #eeeef5;
-    --muted: #5a5a72;
-    --border: rgba(255,255,255,0.07);
-    --card: rgba(255,255,255,0.035);
+    --muted: #9898b0;
+    --border: rgba(255,255,255,0.09);
+    --card: rgba(255,255,255,0.05);
   }
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior:smooth; }
   body { background:var(--bg); color:var(--text); font-family:'Space Grotesk',sans-serif; font-size:16px; line-height:1.6; overflow-x:hidden; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; }
 
-  nav { position:fixed; top:0; width:100%; z-index:100; padding:1rem 4rem; display:flex; align-items:center; justify-content:space-between; background:rgba(8,8,16,0.9); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); transition:padding 0.3s; }
+  nav { position:fixed; top:0; width:100%; z-index:100; padding:1rem 4rem; display:flex; align-items:center; justify-content:space-between; background:rgba(15,15,26,0.92); backdrop-filter:blur(24px); border-bottom:1px solid var(--border); transition:padding 0.3s; }
   .nav-logo { font-family:'Bebas Neue'; font-size:1.6rem; letter-spacing:0.1em; color:var(--text); text-decoration:none; }
   .nav-logo span { color:var(--accent); }
   .nav-links { display:flex; gap:1.8rem; list-style:none; }
@@ -34,18 +34,23 @@
   .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px); background-size:70px 70px; }
   .hero-orb { position:absolute; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%); right:-100px; top:50%; transform:translateY(-50%); animation:orbFloat 8s ease-in-out infinite; }
   @keyframes orbFloat { 0%,100%{transform:translateY(-50%) scale(1);} 50%{transform:translateY(-55%) scale(1.08);} }
+
   .hero-content { position:relative; z-index:1; max-width:1100px; }
   .hero-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(0,229,255,0.07); border:1px solid rgba(0,229,255,0.2); color:var(--accent); padding:0.4rem 1rem; border-radius:100px; font-size:0.75rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.5rem; font-family:'IBM Plex Mono',monospace; animation:fadeUp 0.7s ease both; }
   .hero-badge .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation:pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,229,255,0.4)} 50%{opacity:0.5;box-shadow:0 0 0 6px rgba(0,229,255,0)} }
+
   .hero-name { font-family:'Bebas Neue'; font-size:clamp(4rem,9vw,8.5rem); line-height:0.95; letter-spacing:0.03em; margin-bottom:0.6rem; animation:fadeUp 0.7s 0.1s ease both; }
   .hero-name .line2 { background:linear-gradient(135deg, var(--accent) 0%, var(--accent2) 60%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; display:block; }
-  .hero-title { font-size:clamp(0.9rem,1.8vw,1.2rem); color:var(--muted); font-weight:400; margin-bottom:1.5rem; animation:fadeUp 0.7s 0.2s ease both; font-family:'IBM Plex Mono',monospace; }
+  .hero-title { font-size:clamp(0.9rem,1.8vw,1.2rem); color:var(--muted); font-weight:400; margin-bottom:0.6rem; animation:fadeUp 0.7s 0.2s ease both; font-family:'IBM Plex Mono',monospace; }
   .hero-title strong { color:var(--text); }
-  .hero-summary { max-width:580px; color:var(--muted); font-size:1rem; line-height:1.8; margin-bottom:1.8rem; animation:fadeUp 0.7s 0.3s ease both; }
+  .hero-value { font-size:1rem; color:var(--accent); font-style:italic; margin-bottom:1.2rem; animation:fadeUp 0.7s 0.25s ease both; }
+  .hero-summary { max-width:600px; color:var(--muted); font-size:1rem; line-height:1.8; margin-bottom:1.8rem; animation:fadeUp 0.7s 0.3s ease both; }
+
   .hero-contact-row { display:flex; gap:1.5rem; flex-wrap:wrap; align-items:center; animation:fadeUp 0.7s 0.35s ease both; margin-bottom:2rem; }
-  .hero-contact-item { display:flex; align-items:center; gap:0.5rem; color:var(--muted); font-size:0.82rem; text-decoration:none; font-family:'IBM Plex Mono',monospace; transition:color 0.2s; }
+  .hero-contact-item { display:flex; align-items:center; gap:0.4rem; color:var(--muted); font-size:0.82rem; text-decoration:none; font-family:'IBM Plex Mono',monospace; transition:color 0.2s; }
   .hero-contact-item:hover { color:var(--accent); }
+
   .hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; animation:fadeUp 0.7s 0.4s ease both; }
   .btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.85rem 2rem; border-radius:6px; font-size:0.88rem; font-weight:600; text-decoration:none; transition:all 0.25s; cursor:pointer; border:none; letter-spacing:0.03em; }
   .btn-primary { background:var(--accent); color:#000; }
@@ -54,9 +59,11 @@
   .btn-outline:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-3px); }
   .btn-ghost { background:transparent; color:var(--muted); border:1px solid var(--border); font-family:'IBM Plex Mono',monospace; font-size:0.8rem; }
   .btn-ghost:hover { color:var(--accent); border-color:rgba(0,229,255,0.3); }
+
   .stats-bar { display:flex; gap:3rem; flex-wrap:wrap; animation:fadeUp 0.7s 0.5s ease both; padding-top:2.5rem; border-top:1px solid var(--border); margin-top:2.5rem; }
   .stat-num { font-family:'Bebas Neue'; font-size:2.8rem; color:var(--accent); line-height:1; letter-spacing:0.05em; }
   .stat-label { font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; font-family:'IBM Plex Mono',monospace; }
+
   @keyframes fadeUp { from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);} }
 
   section { padding:6rem 4rem; position:relative; }
@@ -64,24 +71,34 @@
   .section-title { font-family:'Bebas Neue'; font-size:clamp(2.5rem,5vw,4rem); letter-spacing:0.04em; margin-bottom:0.5rem; line-height:1; }
   .section-sub { color:var(--muted); max-width:500px; margin-bottom:3rem; font-size:0.95rem; }
 
+  /* HIGHLIGHTS */
+  #highlights { background:var(--bg2); }
+  .highlights-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:1rem; }
+  .highlight-item { display:flex; align-items:flex-start; gap:0.8rem; padding:1.2rem; background:var(--card); border:1px solid var(--border); border-radius:10px; transition:all 0.3s; }
+  .highlight-item:hover { border-color:rgba(0,229,255,0.3); transform:translateY(-3px); }
+  .highlight-icon { font-size:1.2rem; flex-shrink:0; margin-top:0.1rem; }
+  .highlight-text { font-size:0.93rem; color:var(--muted); line-height:1.5; }
+  .highlight-text strong { color:var(--text); display:block; margin-bottom:0.1rem; }
+
   /* EXPERIENCE */
-  #experience { background:var(--bg2); }
+  #experience { background:var(--bg); }
   .timeline { position:relative; padding-left:2.5rem; }
   .timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, var(--accent), var(--accent2), rgba(255,255,255,0.03)); }
   .timeline-item { position:relative; padding:0 0 3.5rem 2.5rem; }
-  .timeline-dot { position:absolute; left:-2.5rem; width:13px; height:13px; border-radius:50%; background:var(--accent); border:2px solid var(--bg2); top:5px; box-shadow:0 0 15px rgba(0,229,255,0.6); transition:all 0.3s; }
+  .timeline-dot { position:absolute; left:-2.5rem; width:13px; height:13px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); top:5px; box-shadow:0 0 15px rgba(0,229,255,0.6); transition:all 0.3s; }
   .timeline-item:hover .timeline-dot { box-shadow:0 0 25px rgba(0,229,255,0.9); transform:scale(1.3); }
   .timeline-meta { font-size:0.72rem; color:var(--muted); letter-spacing:0.04em; margin-bottom:0.5rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; }
   .timeline-period { background:rgba(0,229,255,0.07); border:1px solid rgba(0,229,255,0.15); color:var(--accent); padding:0.15rem 0.7rem; border-radius:4px; font-size:0.7rem; }
   .timeline-role { font-family:'Bebas Neue'; font-size:1.5rem; letter-spacing:0.05em; margin-bottom:0.15rem; }
-  .timeline-company { color:var(--muted); font-size:0.88rem; margin-bottom:0.8rem; }
+  .timeline-company { color:var(--muted); font-size:0.9rem; margin-bottom:0.8rem; }
   .timeline-company strong { color:var(--text); }
-  .timeline-desc { color:var(--muted); font-size:0.88rem; line-height:1.75; margin-bottom:1rem; }
+  .timeline-desc { color:var(--muted); font-size:0.93rem; line-height:1.8; margin-bottom:1rem; }
+  .timeline-desc strong { color:var(--text); }
   .tag-list { display:flex; gap:0.4rem; flex-wrap:wrap; }
-  .tag { font-size:0.68rem; padding:0.2rem 0.65rem; border-radius:4px; background:var(--card); border:1px solid var(--border); color:var(--muted); letter-spacing:0.03em; font-family:'IBM Plex Mono',monospace; }
+  .tag { font-size:0.75rem; padding:0.25rem 0.75rem; border-radius:4px; background:var(--card); border:1px solid var(--border); color:var(--muted); letter-spacing:0.03em; font-family:'IBM Plex Mono',monospace; }
 
   /* SKILLS */
-  #skills { background:var(--bg); }
+  #skills { background:var(--bg2); }
   .skills-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:1.2rem; }
   .skill-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem; transition:all 0.3s; position:relative; overflow:hidden; }
   .skill-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(0,229,255,0.04), transparent); opacity:0; transition:opacity 0.3s; }
@@ -91,61 +108,34 @@
   .skill-card-title { font-family:'Bebas Neue'; font-size:1rem; letter-spacing:0.08em; margin-bottom:0.8rem; color:var(--accent); }
 
   /* PROJECTS */
-  #projects { background:var(--bg2); }
+  #projects { background:var(--bg); }
   .projects-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:1.5rem; }
   .project-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:2rem; transition:all 0.35s; display:flex; flex-direction:column; position:relative; overflow:hidden; }
   .project-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--accent), var(--accent2)); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease; }
   .project-card:hover::after { transform:scaleX(1); }
   .project-card:hover { border-color:rgba(124,58,237,0.3); transform:translateY(-6px); box-shadow:0 25px 60px rgba(0,0,0,0.4); }
-  .project-num { font-family:'Bebas Neue'; font-size:3.5rem; color:rgba(255,255,255,0.04); line-height:1; margin-bottom:0.3rem; letter-spacing:0.05em; }
-  .project-title { font-family:'Space Grotesk'; font-weight:700; font-size:1.05rem; margin-bottom:0.8rem; line-height:1.3; }
-  .project-desc { color:var(--muted); font-size:0.86rem; line-height:1.75; flex:1; margin-bottom:1.2rem; }
+  .project-num { font-family:'Bebas Neue'; font-size:3.5rem; color:rgba(255,255,255,0.04); line-height:1; margin-bottom:0.3rem; }
+  .project-title { font-weight:700; font-size:1.05rem; margin-bottom:0.8rem; line-height:1.3; }
+  .project-desc { color:var(--muted); font-size:0.92rem; line-height:1.8; flex:1; margin-bottom:1.2rem; }
   .project-platform { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.7rem; color:var(--accent2); background:rgba(124,58,237,0.07); border:1px solid rgba(124,58,237,0.2); padding:0.2rem 0.7rem; border-radius:4px; margin-bottom:0.8rem; font-family:'IBM Plex Mono',monospace; }
 
   /* CERTIFICATIONS */
-  #certifications { background:var(--bg); }
+  #certifications { background:var(--bg2); }
   .certs-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:1.3rem; }
-  .cert-card {
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:1.6rem;
-    transition:all 0.3s;
-    display:flex; flex-direction:column;
-    position:relative; overflow:hidden;
-    text-decoration:none; color:inherit;
-  }
-  .cert-card::before {
-    content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
-    background:linear-gradient(to bottom, var(--accent), var(--accent2));
-    border-radius:3px 0 0 3px;
-    transform:scaleY(0); transform-origin:top;
-    transition:transform 0.35s ease;
-  }
+  .cert-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.6rem; transition:all 0.3s; display:flex; flex-direction:column; position:relative; overflow:hidden; text-decoration:none; color:inherit; }
+  .cert-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(to bottom, var(--accent), var(--accent2)); transform:scaleY(0); transform-origin:top; transition:transform 0.35s ease; }
   .cert-card:hover::before { transform:scaleY(1); }
   .cert-card:hover { border-color:rgba(0,229,255,0.2); transform:translateY(-4px); box-shadow:0 20px 50px rgba(0,0,0,0.35); }
-  .cert-badge {
-    display:inline-flex; align-items:center; gap:0.4rem;
-    font-size:0.68rem; font-family:'IBM Plex Mono',monospace;
-    padding:0.2rem 0.6rem; border-radius:4px;
-    margin-bottom:1rem; width:fit-content;
-    font-weight:500; letter-spacing:0.05em;
-  }
+  .cert-badge { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.7rem; font-family:'IBM Plex Mono',monospace; padding:0.25rem 0.7rem; border-radius:4px; margin-bottom:1rem; width:fit-content; font-weight:500; letter-spacing:0.05em; }
   .cert-badge.scrum { background:rgba(0,229,255,0.08); border:1px solid rgba(0,229,255,0.2); color:var(--accent); }
   .cert-badge.udemy { background:rgba(168,85,247,0.08); border:1px solid rgba(168,85,247,0.2); color:#a855f7; }
-  .cert-issuer-logo { font-size:1.3rem; margin-bottom:0.5rem; }
-  .cert-title { font-family:'Space Grotesk'; font-weight:700; font-size:0.95rem; line-height:1.4; margin-bottom:0.4rem; color:var(--text); }
+  .cert-title { font-weight:700; font-size:0.95rem; line-height:1.4; margin-bottom:0.5rem; color:var(--text); }
   .cert-meta { font-size:0.75rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; margin-bottom:1rem; display:flex; flex-direction:column; gap:0.2rem; }
-  .cert-meta span { display:flex; align-items:center; gap:0.4rem; }
-  .cert-link {
-    display:inline-flex; align-items:center; gap:0.4rem;
-    font-size:0.75rem; color:var(--accent); font-family:'IBM Plex Mono',monospace;
-    margin-top:auto; transition:gap 0.2s;
-  }
+  .cert-link { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.75rem; color:var(--accent); font-family:'IBM Plex Mono',monospace; margin-top:auto; transition:gap 0.2s; }
   .cert-card:hover .cert-link { gap:0.7rem; }
 
   /* CONTACT */
-  #contact { background:var(--bg2); }
+  #contact { background:var(--bg); }
   .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
   .contact-item { display:flex; align-items:center; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--border); transition:all 0.2s; }
   .contact-item:hover { border-color:rgba(0,229,255,0.2); }
@@ -159,19 +149,6 @@
 
   footer { padding:2rem 4rem; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:var(--bg2); }
   footer p { color:var(--muted); font-size:0.8rem; font-family:'IBM Plex Mono',monospace; }
-
-  .reveal { opacity:1; transform:translateY(0); transition:opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity:1; transform:translateY(0); }
-  .stagger > * { opacity:1; transform:translateY(0); transition:opacity 0.6s ease, transform 0.6s ease; }
-  .stagger.visible > *:nth-child(1){transition-delay:0s;}
-  .stagger.visible > *:nth-child(2){transition-delay:0.08s;}
-  .stagger.visible > *:nth-child(3){transition-delay:0.16s;}
-  .stagger.visible > *:nth-child(4){transition-delay:0.24s;}
-  .stagger.visible > *:nth-child(5){transition-delay:0.32s;}
-  .stagger.visible > *:nth-child(6){transition-delay:0.4s;}
-  .stagger.visible > *:nth-child(7){transition-delay:0.48s;}
-  .stagger.visible > *:nth-child(8){transition-delay:0.56s;}
-  .stagger.visible > * { opacity:1; transform:translateY(0); }
 
   @media(max-width:768px){
     nav{padding:1rem 1.5rem !important;}
@@ -190,6 +167,7 @@
 <nav>
   <a href="#" class="nav-logo">JB<span>.</span></a>
   <ul class="nav-links">
+    <li><a href="#highlights">Highlights</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -207,6 +185,7 @@
     <div class="hero-badge"><span class="dot"></span> Open to Opportunities</div>
     <h1 class="hero-name">Jagdish<br/><span class="line2">Bhavsar</span></h1>
     <p class="hero-title"><strong>Technical Lead</strong> &nbsp;/&nbsp; Android & Platform Engineering Lead &nbsp;/&nbsp; 13+ Years</p>
+    <p class="hero-value">Delivering scalable Android platform systems from architecture to production release.</p>
     <p class="hero-summary">Architecting, designing, and developing scalable mobile solutions across consumer electronics, medical, IoT, and e-commerce. Strong expertise in Kotlin, Java, React Native, Android SDK/NDK, Jetpack, and app architecture. Additionally experienced in AOSP customization and system-level integrations.</p>
     <div class="hero-contact-row">
       <a href="mailto:bhavsarjagdishr@gmail.com" class="hero-contact-item">✉ bhavsarjagdishr@gmail.com</a>
@@ -221,12 +200,29 @@
       <a href="#experience" class="btn btn-ghost">Full Timeline →</a>
     </div>
     <div class="stats-bar">
-      <div class="stat"><div class="stat-num" data-target="13" data-suffix="+">13+</div><div class="stat-label">Years Exp.</div></div>
-      <div class="stat"><div class="stat-num" data-target="6" data-suffix="">6</div><div class="stat-label">Companies</div></div>
-      <div class="stat"><div class="stat-num" data-target="6" data-suffix="">6</div><div class="stat-label">Projects</div></div>
-      <div class="stat"><div class="stat-num" data-target="6" data-suffix="">6</div><div class="stat-label">Certifications</div></div>
-      <div class="stat"><div class="stat-num" style="font-size:1.1rem;letter-spacing:0.02em;">IoT · XR · Medical · Consumer Apps</div><div class="stat-label">Domains</div></div>
+      <div class="stat"><div class="stat-num">13+</div><div class="stat-label">Years Exp.</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Companies</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Projects</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Certifications</div></div>
+      <div class="stat"><div class="stat-num" style="font-size:1.1rem;padding-top:0.4rem;">IoT · XR · Medical · Consumer Apps</div><div class="stat-label">Domains</div></div>
     </div>
+  </div>
+</section>
+
+<!-- KEY HIGHLIGHTS -->
+<section id="highlights">
+  <div class="section-label">At a Glance</div>
+  <h2 class="section-title">Key Highlights</h2>
+  <p class="section-sub">What I bring to the table — scannable in 10 seconds.</p>
+  <div class="highlights-grid">
+    <div class="highlight-item"><div class="highlight-icon">📱</div><div class="highlight-text"><strong>Android Platform up to Version 16</strong>System-level integration, framework customization, and native app development.</div></div>
+    <div class="highlight-item"><div class="highlight-icon">🏗️</div><div class="highlight-text"><strong>Modern Android Architecture</strong>MVVM, Clean Architecture, modular app design for scalable and maintainable solutions.</div></div>
+    <div class="highlight-item"><div class="highlight-icon">⚡</div><div class="highlight-text"><strong>Kotlin & Java Expertise</strong>Native Android development using SDK, NDK, JNI, Coroutines, Flow, and full Jetpack suite.</div></div>
+    <div class="highlight-item"><div class="highlight-icon">📡</div><div class="highlight-text"><strong>IoT Connectivity</strong>Extensive experience with BLE, Wi-Fi Direct, MQTT, Thread, and socket communication.</div></div>
+    <div class="highlight-item"><div class="highlight-icon">👥</div><div class="highlight-text"><strong>Technical Leadership</strong>Led cross-functional teams of 3–6 engineers. Code reviews, mentoring, sprint planning, and architecture ownership.</div></div>
+    <div class="highlight-item"><div class="highlight-icon">✅</div><div class="highlight-text"><strong>CTS/VTS/GTS Validation</strong>Delivered production-ready Android builds with full compliance and certification for OEM release.</div></div>
+    <div class="highlight-item"><div class="highlight-icon">🔄</div><div class="highlight-text"><strong>CI/CD & Release Management</strong>Strong DevOps exposure with Bitrise, Jenkins, GitLab — end-to-end release ownership.</div></div>
+    <div class="highlight-item"><div class="highlight-icon">🏥</div><div class="highlight-text"><strong>Diverse Domain Experience</strong>Medical devices, XR platforms, IoT products, consumer electronics, and e-commerce apps.</div></div>
   </div>
 </section>
 
@@ -235,13 +231,18 @@
   <div class="section-label">Career Path</div>
   <h2 class="section-title">Work Experience</h2>
   <p class="section-sub">13+ years across top-tier companies in Android, IoT, and embedded systems.</p>
-  <div class="timeline reveal">
+  <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-meta"><span class="timeline-period">Feb 2023 – Present · 3 yrs</span><span>Ahmedabad · On-site</span></div>
       <div class="timeline-role">Technical Lead</div>
       <div class="timeline-company"><strong>eInfochips</strong> — An Arrow Company</div>
-      <div class="timeline-desc"><strong>Client: Qualcomm – XR Platform (2024–2025)</strong><br/>Contributed to Android 14 AOSP customization for Snapdragon XR1/XR2 standalone devices, executed CTS/VTS/GTS validation, enabled incremental OTA updates, and optimized framework and HAL layers for performance and system stability.<br/><br/><strong>Medical Imaging Platform (2023)</strong><br/>Led a team of 3 engineers through full release cycles. Delivered 2 production releases with Samsung Galaxy Tab S8/S9 support, stabilized Android 13 & 14 upgrades, upgraded Qualcomm SNPE SDK and AI models for on-device bladder scanning inference.</div>
+      <div class="timeline-desc">
+        <strong>Client: Qualcomm – XR Platform (2024–2025)</strong><br/>
+        Contributed to Android 14 AOSP customization for Snapdragon XR1/XR2 standalone devices, executed CTS/VTS/GTS validation, enabled incremental OTA updates, and optimized framework and HAL layers for performance and system stability.<br/><br/>
+        <strong>Medical Imaging Platform (2023)</strong><br/>
+        Led a team of 3 engineers through full release cycles. Delivered 2 production releases with Samsung Galaxy Tab S8/S9 support, stabilized Android 13 & 14 upgrades, upgraded Qualcomm SNPE SDK and AI models for on-device bladder scanning inference.
+      </div>
       <div class="tag-list"><span class="tag">AOSP Android 14</span><span class="tag">Snapdragon XR1/XR2</span><span class="tag">CTS/VTS/GTS</span><span class="tag">SNPE 2.10</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">OTA Updates</span></div>
     </div>
     <div class="timeline-item">
@@ -257,7 +258,7 @@
       <div class="timeline-meta"><span class="timeline-period">Mar 2016 – Mar 2019 · 3 yrs</span><span>Ahmedabad</span></div>
       <div class="timeline-role">Module Lead</div>
       <div class="timeline-company"><strong>ViitorCloud Technologies</strong></div>
-      <div class="timeline-desc">Drove full project lifecycle from scope definition and effort estimation to architecture design and delivery. Led 6+ engineers, conducted code reviews, client demos, training sessions, and cross-functional team workflows.</div>
+      <div class="timeline-desc">Drove full project lifecycle from scope definition and effort estimation to architecture design and delivery. Led 6+ engineers, conducted code reviews, mentored team members, managed client demos, and cross-functional team workflows.</div>
       <div class="tag-list"><span class="tag">Android</span><span class="tag">Java</span><span class="tag">Architecture</span><span class="tag">Team Lead</span><span class="tag">Agile</span></div>
     </div>
     <div class="timeline-item">
@@ -291,8 +292,8 @@
 <section id="skills">
   <div class="section-label">Technical Stack</div>
   <h2 class="section-title">Skills & Expertise</h2>
-  <p class="section-sub">Deep expertise across Android platform engineering, IoT protocols, and system architecture.</p>
-  <div class="skills-grid stagger">
+  <p class="section-sub">Deep expertise across Android app development, IoT protocols, and system architecture.</p>
+  <div class="skills-grid">
     <div class="skill-card"><div class="skill-card-icon">💻</div><div class="skill-card-title">Languages</div><div class="tag-list"><span class="tag">Kotlin</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">React Native</span><span class="tag">Python</span><span class="tag">Shell Script</span></div></div>
     <div class="skill-card"><div class="skill-card-icon">🤖</div><div class="skill-card-title">Android & AOSP</div><div class="tag-list"><span class="tag">Android SDK/NDK</span><span class="tag">AOSP</span><span class="tag">JNI</span><span class="tag">SELinux</span><span class="tag">HAL</span><span class="tag">ADB/Fastboot</span></div></div>
     <div class="skill-card"><div class="skill-card-icon">🏗️</div><div class="skill-card-title">Architecture & Jetpack</div><div class="tag-list"><span class="tag">MVVM</span><span class="tag">Clean Architecture</span><span class="tag">Room</span><span class="tag">WorkManager</span><span class="tag">Hilt/Dagger</span><span class="tag">Coroutines</span><span class="tag">Flow</span></div></div>
@@ -308,14 +309,14 @@
 <section id="projects">
   <div class="section-label">Selected Work</div>
   <h2 class="section-title">Projects</h2>
-  <p class="section-sub">Delivered across IoT, medical, aerospace, XR, and enterprise domains.</p>
-  <div class="projects-grid stagger">
+  <p class="section-sub">Delivered across IoT, medical, aerospace, XR, and consumer app domains.</p>
+  <div class="projects-grid">
     <div class="project-card"><div class="project-num">01</div><div class="project-platform">📡 P2P · Wi-Fi / BLE</div><div class="project-title">SDK for File Sharing & Video Streaming</div><div class="project-desc">Java-based SDK enabling smart peer-to-peer connectivity between Android & Windows devices for offline file sharing, video streaming, and collaboration — no internet required. Auto device discovery and multi-device content transfer.</div><div class="tag-list"><span class="tag">Java</span><span class="tag">React Native</span><span class="tag">Wi-Fi Direct</span><span class="tag">BLE</span><span class="tag">AOSP</span></div></div>
     <div class="project-card"><div class="project-num">02</div><div class="project-platform">🔥 ESP32 · IoT</div><div class="project-title">IoT Smart Grill Device Control</div><div class="project-desc">Android IoT solution for controlling Wi-Fi enabled smart grills, fireplaces, and stoves via Ayla Cloud + LAN. Supports device provisioning, registration, and remote operations in low/no-internet conditions.</div><div class="tag-list"><span class="tag">Kotlin</span><span class="tag">Ayla Cloud</span><span class="tag">ESP32</span><span class="tag">Wi-Fi</span><span class="tag">Bitrise</span></div></div>
     <div class="project-card"><div class="project-num">03</div><div class="project-platform">💧 ESP32 · IoT</div><div class="project-title">Water Heater & Boiler IoT Solution</div><div class="project-desc">IoT platform controlling residential water heaters and commercial boilers with temperature control, scheduling, multiple modes, and electricity usage graphs. Also used by contractors for industrial diagnostics.</div><div class="tag-list"><span class="tag">Kotlin</span><span class="tag">Ayla AURA SDK</span><span class="tag">GEA2</span><span class="tag">Modbus-RTU</span></div></div>
     <div class="project-card"><div class="project-num">04</div><div class="project-platform">✈️ NXP iMX6 · Aircraft</div><div class="project-title">Aircraft Cabin Control System</div><div class="project-desc">IoT-based Android app controlling aircraft cabin lighting, overhead bins, and PSUs via Thread mesh networking. BLE provisioning with socket communication to the border router gateway.</div><div class="tag-list"><span class="tag">Java</span><span class="tag">BLE</span><span class="tag">Thread</span><span class="tag">Socket</span><span class="tag">NXP iMX6</span></div></div>
     <div class="project-card"><div class="project-num">05</div><div class="project-platform">🏥 Medical · AI/ML</div><div class="project-title">Medical Imaging — Patient Care System</div><div class="project-desc">Advanced imaging system for urology and emergency medicine — bladder scanning, ultrasound, and vascular imaging. Integrated Qualcomm SNPE 2.10 with Caffe model conversion for on-device AI inference.</div><div class="tag-list"><span class="tag">Java</span><span class="tag">C++</span><span class="tag">SNPE 2.10</span><span class="tag">Caffe</span><span class="tag">Python</span><span class="tag">Android 10</span></div></div>
-    <div class="project-card"><div class="project-num">06</div><div class="project-platform">🥽 XR · Qualcomm</div><div class="project-title">XR Platform — Android AOSP & Framework Customization</div><div class="project-desc">Contributed to Android 14 AOSP customization for Qualcomm's XR standalone VR/MR devices. Executed CTS/VTS/GTS validation, enabled incremental OTA updates, and optimized framework and HAL layers for performance, boot time, and system stability for OEM release.</div><div class="tag-list"><span class="tag">AOSP Android 14</span><span class="tag">Snapdragon XR</span><span class="tag">CTS/VTS/GTS</span><span class="tag">OTA Updates</span><span class="tag">HAL</span><span class="tag">Linux</span></div></div>
+    <div class="project-card"><div class="project-num">06</div><div class="project-platform">🥽 XR · Qualcomm</div><div class="project-title">XR Platform — Android AOSP & Framework Customization</div><div class="project-desc">Contributed to Android 14 AOSP customization for Qualcomm's XR standalone VR/MR devices. Executed CTS/VTS/GTS validation, enabled incremental OTA updates, and optimized framework and HAL layers for performance and system stability.</div><div class="tag-list"><span class="tag">AOSP Android 14</span><span class="tag">Snapdragon XR</span><span class="tag">CTS/VTS/GTS</span><span class="tag">OTA Updates</span><span class="tag">HAL</span><span class="tag">Linux</span></div></div>
   </div>
 </section>
 
@@ -324,63 +325,43 @@
   <div class="section-label">Credentials</div>
   <h2 class="section-title">Certifications</h2>
   <p class="section-sub">Professional certifications in Agile, Android, AI, and Project Management.</p>
-  <div class="certs-grid stagger">
-
+  <div class="certs-grid">
     <a href="https://bcert.me/bc/html/show-badge.html?b=dpdlcpta" target="_blank" class="cert-card">
       <div class="cert-badge scrum">🏅 Scrum Alliance</div>
       <div class="cert-title">Certified ScrumMaster® (CSM)</div>
-      <div class="cert-meta">
-        <span>📅 Issued Jun 2025</span>
-        <span>⏳ Expires Jun 2027</span>
-      </div>
+      <div class="cert-meta"><span>📅 Issued Jun 2025</span><span>⏳ Expires Jun 2027</span></div>
       <div class="cert-link">View Certificate →</div>
     </a>
-
     <a href="https://www.udemy.com/certificate/UC-1a84734a-3279-4ea4-83df-750f76b23ddb/" target="_blank" class="cert-card">
       <div class="cert-badge udemy">🎓 Udemy</div>
       <div class="cert-title">Advanced Android Bootcamp 2024 — Jetpack, Architecture & More</div>
-      <div class="cert-meta">
-        <span>📅 Issued Mar 2024</span>
-      </div>
+      <div class="cert-meta"><span>📅 Issued Mar 2024</span></div>
       <div class="cert-link">View Certificate →</div>
     </a>
-
     <a href="https://www.udemy.com/certificate/UC-b9bbd1b7-f837-4bcb-8ab0-3efc8b32a0a7/" target="_blank" class="cert-card">
       <div class="cert-badge udemy">🎓 Udemy</div>
       <div class="cert-title">Visual Embedded Android (AOSP) with Drawings and Practice</div>
-      <div class="cert-meta">
-        <span>📅 Issued Jun 2025</span>
-      </div>
+      <div class="cert-meta"><span>📅 Issued Jun 2025</span></div>
       <div class="cert-link">View Certificate →</div>
     </a>
-
     <a href="https://www.udemy.com/certificate/UC-76948640-a85d-4ed8-b246-bdcfa75d3b67/" target="_blank" class="cert-card">
       <div class="cert-badge udemy">🎓 Udemy</div>
       <div class="cert-title">Generative AI for Beginners</div>
-      <div class="cert-meta">
-        <span>📅 Issued Jul 2025</span>
-      </div>
+      <div class="cert-meta"><span>📅 Issued Jul 2025</span></div>
       <div class="cert-link">View Certificate →</div>
     </a>
-
     <a href="https://www.udemy.com/certificate/UC-b8c03781-0c06-49f9-a474-c9aab6e630c7/" target="_blank" class="cert-card">
       <div class="cert-badge udemy">🎓 Udemy</div>
       <div class="cert-title">Project Management Fundamentals</div>
-      <div class="cert-meta">
-        <span>📅 Issued Nov 2025</span>
-      </div>
+      <div class="cert-meta"><span>📅 Issued Nov 2025</span></div>
       <div class="cert-link">View Certificate →</div>
     </a>
-
     <a href="https://www.udemy.com/certificate/UC-141cb307-f525-4a9d-89b0-10d8d798f1ad/" target="_blank" class="cert-card">
       <div class="cert-badge udemy">🎓 Udemy</div>
       <div class="cert-title">Agile Fundamentals: Including Scrum & Kanban</div>
-      <div class="cert-meta">
-        <span>📅 Issued Nov 2025</span>
-      </div>
+      <div class="cert-meta"><span>📅 Issued Nov 2025</span></div>
       <div class="cert-link">View Certificate →</div>
     </a>
-
   </div>
 </section>
 
@@ -389,25 +370,27 @@
   <div class="section-label">Let's Connect</div>
   <h2 class="section-title">Get In Touch</h2>
   <p class="section-sub">Open to new opportunities in Android, IoT, and embedded systems engineering.</p>
-  <div class="contact-grid reveal">
+  <div class="contact-grid">
     <div>
       <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><a href="mailto:bhavsarjagdishr@gmail.com" class="contact-value">bhavsarjagdishr@gmail.com</a></div></div>
       <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><a href="tel:+919904915308" class="contact-value">+91 9904915308</a></div></div>
+      <div class="contact-item"><div class="contact-icon">💼</div><div><div class="contact-label">LinkedIn</div><a href="https://www.linkedin.com/in/jagdish-bhavsar" target="_blank" class="contact-value">linkedin.com/in/jagdish-bhavsar</a></div></div>
+      <div class="contact-item"><div class="contact-icon">💻</div><div><div class="contact-label">GitHub</div><a href="https://github.com/jagdish-bhavsar-lab" target="_blank" class="contact-value">github.com/jagdish-bhavsar-lab</a></div></div>
       <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-value">Ahmedabad, Gujarat, India</div></div></div>
       <div class="contact-item"><div class="contact-icon">🎓</div><div><div class="contact-label">Education</div><div class="contact-value">M.Sc. CA & IT — K.S. School of Business Management (GUJ University)</div></div></div>
     </div>
     <div class="strengths-card">
       <div class="strengths-title">Core Strengths</div>
       <div class="tag-list" style="gap:0.6rem;">
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">Android Platform Engineering</span>
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">IoT System Architecture</span>
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">Team Leadership (6+ Engineers)</span>
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">AOSP Customization</span>
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">CI/CD & Release Management</span>
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">Certified ScrumMaster® (CSM)</span>
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">XR & Medical Devices</span>
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">On-Device AI / SNPE</span>
-        <span class="tag" style="padding:0.5rem 1rem;font-size:0.8rem;">Agile / Sprint Planning</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">Android Platform Engineering</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">IoT System Architecture</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">Team Leadership (6+ Engineers)</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">AOSP Customization</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">CI/CD & Release Management</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">Certified ScrumMaster® (CSM)</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">XR & Medical Devices</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">On-Device AI / SNPE</span>
+        <span class="tag" style="padding:0.5rem 1rem;font-size:0.82rem;">Agile / Sprint Planning</span>
       </div>
     </div>
   </div>
@@ -418,4 +401,10 @@
   <p><a href="mailto:bhavsarjagdishr@gmail.com" style="color:var(--muted);text-decoration:none;">bhavsarjagdishr@gmail.com</a> &nbsp;·&nbsp; +91 9904915308 &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/jagdish-bhavsar" target="_blank" style="color:var(--accent);text-decoration:none;">LinkedIn</a> &nbsp;·&nbsp; <a href="https://github.com/jagdish-bhavsar-lab" target="_blank" style="color:var(--accent);text-decoration:none;">GitHub</a></p>
 </footer>
 
-<script data-cfasync="false" src=
+<script>
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.padding = window.scrollY > 50 ? '0.65rem 4rem' : '1rem 4rem';
+  });
+</script>
+</body>
+</html>
